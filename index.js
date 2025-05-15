@@ -72,7 +72,7 @@ function CemberinAlani(r, pi) {
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-console.log(CemberinAlani(15));
+console.log(CemberinAlani(15,pi));
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
@@ -93,37 +93,70 @@ console.log(CemberinAlani(15));
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
+let ucetambolunenler = [],
+  i = 0,
+  enkucuk = sayilar[i],
+  enbuyuk = sayilar[i],
+  ucebolunenlerintoplami = 0,
+  besyuzdenkucuksayilar = [],
+  siralisayilar = [],
+  tekraredensayilar = [];
 
 // 3a çözümü
 
-/* kodlar buraya */
+
+  for(i; i<sayilar.length; i++){
+    if(enkucuk > sayilar[i]){
+      enkucuk = sayilar[i];
+    }
+    if(enbuyuk < sayilar[i]){
+      enbuyuk = sayilar[i];
+    }
+  }
+  console.log(`Sayılar dizisindeki en büyük sayı: ${enbuyuk} , en küçük sayı: ${enkucuk}`);
+
 
 // 3b çözümü:
-
-/* kodlar buraya */
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
+console.log(ucetambolunenler);
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((topla , num)=> topla + num ,0);
+console.log(ucebolunenlerintoplami);
 
 // 3d çözümü
-
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter(num => num <500);
+console.log(besyuzdenkucuksayilar);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a,b) => a - b);
+console.log(siralisayilar);
 
 // 3f çözümü
 
-/* kodlar buraya */
+const tekrar = {};
+
+sayilar.forEach((sayi) => {
+  if (tekrar[sayi]) {
+    tekrar[sayi]++;
+  } else {
+    tekrar[sayi] = 1;
+  }
+});
+
+for (const sayi in tekrar) {
+  if (tekrar[sayi] > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${tekrar[sayi]} kere tekrar edilmiştir`);
+  }
+}
+
+console.log(tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
